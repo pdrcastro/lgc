@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1 
+kind: Ingress
+metadata:
+  name: interview-server-ingress
+  namespace: helm-demo
+  annotations:
+    kubernetes.io/ingress.class: "alb"
+    alb.ingress.kubernetes.io/group.name: 'interview-resources'
+    alb.ingress.kubernetes.io/group.order: '11'
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/success-codes: '200'
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/security-groups: interview-sg
+    alb.ingress.kubernetes.io/healthcheck-path: '/'
+    alb.ingress.kubernetes.io/tags: Name=interview
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: '30'
+    alb.ingress.kubernetes.io/healthy-threshold-count: '5'
+spec:
+  rules:
+  - host: demo.interview.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: guestbook-demo
+            port:
+              number: 3000
+        pathType: ImplementationSpecific

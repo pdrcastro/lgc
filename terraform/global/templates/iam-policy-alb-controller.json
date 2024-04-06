@@ -1,0 +1,28 @@
+{
+    "Statement": [
+        {
+            "Action": [
+                "ec2:DescribeVpcs",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeInstances",
+                "ec2:DescribeAvailabilityZones",
+                "ec2:*",
+                "elasticloadbalancing:*",
+                "iam:*",
+                "wafv2:GetWebACLForResource",
+                "waf-regional:GetWebACLForResource"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "acm:ListCertificates",
+                "acm:DescribeCertificate"
+            ],
+            "Resource": "*"
+        }
+    ],
+    "Version": "2012-10-17"
+}

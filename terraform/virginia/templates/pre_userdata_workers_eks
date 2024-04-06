@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo -s
+set -o xtrace
+mkdir /letsgetcheck
