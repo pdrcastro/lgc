@@ -68,7 +68,7 @@ Inside the folder `/yaml/alb/`we can find the files for CRDs used by AWS ALB.
 ## Access to Application
 To access the application it was deploy ingress to expose application SVC. In the following image show ingress with what will be external DNS. 
 
-![Alt Text](/lgc/img/ingress.png)
+![Alt Text](/img/ingress.png)
 
 It does not work because the ZONE ID was sent on exercise does not exist. If you want i can change for new on.
 
