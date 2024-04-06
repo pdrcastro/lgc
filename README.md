@@ -20,12 +20,26 @@ This is the description of the steps for Letsgetchecked Interview for role the D
 - Create ACCCESS and SECRET_KEY for user interview
 
 # Deploy Infrastructure
+## Virginia
 - Go to folder `terraform/virginia/` and the following commands:
  ```bash 
  terraform init
  terraform plan
  terraform apply
  ```
+ On this folder it will be create the following resources:
+ - AWS EKS
+ - Security Group
+ ## Global
+- Go to folder `terraform/global/` and the following commands:
+ ```bash 
+ terraform init
+ terraform plan
+ terraform apply
+ ```
+  On this folder it will be create the following resources:
+ - IAM Role with permission for AWS EKS Worker nodes
+ - Route53
 ## YAML 
 ### EKS Configmap AWS-AUTH
 The configuration of authorization to cluster can be found on configmap file `/yaml/aws-auth.yaml`. To deploy please run the following command:
@@ -50,6 +64,13 @@ Inside the folder `/yaml/alb/`we can find the files for CRDs used by AWS ALB.
 ```helm install guestbook-demo ./guestbook/ --namespace helm-demo```
 -  Check pods
 ```kubectl get pod -n helm-demo```
+
+## Access to Application
+To access the application it was deploy ingress to expose application SVC. In the following image show ingress with what will be external DNS. 
+
+![Alt Text](/Users/castro/Documents/personal_repo/lgc/img/ingress.png)
+
+It does not work because the ZONE ID was sent on exercise does not exist. If you want i can change for new on.
 
 ## Authors
 
